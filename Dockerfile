@@ -13,7 +13,7 @@ RUN echo "deb http://repos.mesosphere.io/debian wheezy main" | tee /etc/apt/sour
     apt-get install -y \
       mesos=$DEB_VERSION_MESOS \
       maven \
-      default-jdk \
+      openjdk-7-jre-headless \
       mesos \
       scala \
       curl \
