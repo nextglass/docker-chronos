@@ -11,5 +11,12 @@ Chronos inside Marathon on Mesos with Docker
 ## quick start
 
 ```
-docker run -d nickpoorman/docker-chronos --master zk://zk1:2181,zk2:2181,zk3:2181/mesos --zk_hosts zk1:2181,zk2:2181,zk3:2181
+docker run -d \
+    --restart=always \
+    --net=host \
+    -p 4400:4400 \
+    nickpoorman/docker-chronos \
+    --master zk://${HOST_IP_0}:2181,${HOST_IP_1}:2181,${HOST_IP_2}:2181/mesos \
+    --zk_hosts ${HOST_IP_0}:2181,${HOST_IP_1}:2181,${HOST_IP_2}:2181 \
+    --http_port 4400
 ```
