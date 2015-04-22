@@ -12,8 +12,8 @@ RUN echo "deb http://repos.mesosphere.io/debian wheezy main" | tee /etc/apt/sour
     apt-get update && \
     apt-get install -y \
       mesos=$DEB_VERSION_MESOS \
-      maven \
       openjdk-7-jre-headless \
+      maven \
       mesos \
       scala \
       curl \
@@ -28,7 +28,9 @@ WORKDIR /chronos
 
 RUN wget https://github.com/mesos/chronos/archive/2.3.3.tar.gz -O - | tar -xz --strip-components=1
 
-RUN mvn clean package
+RUN export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java && \
+    update-alternatives --set java /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java && \
+    mvn clean package
 
 RUN rm -rf /etc/mesos
 
