@@ -8,10 +8,10 @@ MAINTAINER Nick Poorman <mail@nickpoorman.com>
 ENV DEB_VERSION_CHRONOS 2.3.3-1.0.1.debian77
 ENV DEB_VERSION_MESOS 0.22.0-1.0.debian78
 
-RUN echo "deb http://repos.mesosphere.io/debian wheezy main" > /etc/apt/sources.list.d/mesosphere.list && \
+RUN echo "deb http://repos.mesosphere.io/debian wheezy main" | tee /etc/apt/sources.list.d/mesosphere.list && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv E56151BF && \
     apt-get update && \
-    apt-get -f -y install chronos=$DEB_VERSION_CHRONOS mesos=$DEB_VERSION_MESOS
+    apt-get -y install curl mesos=$DEB_VERSION_MESOS chronos=$DEB_VERSION_CHRONOS
 
 # we don't want to use localhost as zk_host
 RUN rm /etc/mesos/zk

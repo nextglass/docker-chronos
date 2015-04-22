@@ -5,8 +5,8 @@ Chronos inside Marathon on Mesos with Docker
 [https://github.com/mesosphere/chronos](https://github.com/mesosphere/chronos)
 
 ## Version
-CHRONOS 2.3.3-1.0.1.debian77
-MESOS 0.22.0-1.0.debian78
+ * CHRONOS 2.3.3-1.0.1.debian77
+ * MESOS 0.22.0-1.0.debian78
 
 ## quick start
 
